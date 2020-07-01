@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r, message=FALSE}
 library(tidyverse)
 library(gapminder)
+library(ggplot2)
 ```
 
 # Abstract
@@ -32,5 +33,16 @@ gapminder_unfiltered %>%
   arrange(year) ->
   sumdat
 sumdat
+```
+
+#Edit your partner’s file to add code to create a scatterplot of year versus maximum life expectancy. Color code by country, and add a single Ordinary Least Squares (OLS) line.
+
+```{r}
+ggplot(data = sumdat) +
+  geom_point(mapping = aes(x = year, y = lifeExp, color = country, )) +
+  geom_smooth(aes(x = year, y = lifeExp), method = lm, se = FALSE) +
+  xlab("Year") +
+  ylab("Maximum Life Expectancy")
+  
 ```
 
