@@ -1,6 +1,6 @@
 ---
 title: "Examine Life Expectancy"
-author: "Richard Ressler"
+author: "Yon Garber"
 date: "`r Sys.Date()`"
 output: pdf_document
 urlcolor: "blue"
@@ -32,5 +32,17 @@ gapminder_unfiltered %>%
   arrange(year) ->
   sumdat
 sumdat
+```
+
+```{r}
+sumdat %>% 
+  ggplot(aes(x=year, y=lifeExp)) +
+  geom_point(aes(color = country)) +
+  theme_bw()+
+  geom_smooth(method = "lm", se = FALSE) +
+  xlab("Year") +
+  ylab("Maximum Life Expectancy") 
+```
+
 ```
 
